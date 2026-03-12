@@ -1,36 +1,25 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AES Encryption Homework
 
-## Getting Started
+Here is my web app to encrypt and decrypt files using AES.
 
-First, run the development server:
+## What is AES?
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+AES is a block cipher. It does not encrypt one letter at a time. It takes your text and cuts it into blocks of exactly 128 bits. Then it scrambles the data in steps called "rounds". The number of rounds changes based on the key size.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Key Sizes
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+* **AES-128:** Has 10 rounds. It is fast and secure for normal things.
+* **AES-192:** Has 12 rounds. Better security.
+* **AES-256:** Has 14 rounds. This is the most secure one, very hard to break.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Modes of Operation
 
-## Learn More
+* **ECB:** Encrypts every block alone. It is simple but bad for security because repeating text makes repeating patterns.
+* **CBC:** Mixes each block with the last encrypted block. We use an IV (Initialization Vector) for the first block so the result is always different and safe.
+* **CFB:** Works like a stream cipher instead of blocks. It also needs an IV to work safely.
 
-To learn more about Next.js, take a look at the following resources:
+## Key Handling
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The AES library needs the secret key to be exactly 128, 192, or 256 bits. If a user types a password like "cat", it will fail. So, my code takes the password, hashes it with SHA-256, and then cuts it to the exact bit size we selected.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

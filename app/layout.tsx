@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Link from "next/link";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -28,6 +29,19 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+
+        <footer>
+          <p className="text-center text-sm  text-gray-400 font-extralight">
+            Copyright@2026. Developed by{" "}
+            <Link
+              className="underline"
+              target="_blank"
+              href={"https://github.com/icerahi"}
+            >
+              MD IMRAN HASAN
+            </Link>
+          </p>
+        </footer>
       </body>
     </html>
   );
