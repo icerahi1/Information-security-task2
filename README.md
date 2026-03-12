@@ -1,4 +1,4 @@
-# AES Encryption Homework
+# AES Encryption Task
 
 Here is my web app to encrypt and decrypt files using AES.
 https://information-security-task2.vercel.app/
